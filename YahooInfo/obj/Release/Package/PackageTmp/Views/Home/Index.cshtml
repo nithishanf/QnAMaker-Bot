@@ -1,0 +1,189 @@
+﻿@{
+    ViewBag.Title = "Yahoo Info Bot";
+}
+
+
+<link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+<style>
+    .wc-chatview-panel {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        border-radius: 10px;
+    }
+
+    .wc-message-groups {
+        background-color: whitesmoke;
+    }
+
+    .wc-header {
+        background-color: rgb(172, 125, 133);
+    }
+
+    .wc-message-from-bot .wc-message-content {
+        background-color: rgb(212, 190, 187);
+    }
+
+    .wc-message-from-me .wc-message-content {
+        background-color: rgb(109, 33, 190) !important;
+    }
+
+    .wc-message-from-me svg.wc-message-callout path {
+        fill: rgb(109, 33, 190) !important;
+    }
+    .wc-console{
+         background-color: #15375a;
+    }
+    .wc-console svg {
+         fill: white;
+    }
+    input[type="text"]
+    {
+        color:white!important;
+    }
+</style>
+<div>
+    <div id="bot">
+    </div>
+</div>
+
+<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+<script>
+    BotChat.App({
+        directLine: { secret: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM' },
+        user: { id: 'You' },
+        bot: { id: 'botid' },
+        resize: 'detect'
+    }, document.getElementById("bot"));
+
+    var hdr = document.getElementsByClassName("wc-header");
+    hdr[0].textContent = "Ask YaVA";
+</script>
+
+
+@*<script>
+        (function () {
+            var div = document.createElement("div");
+            document.getElementsByTagName('body')[0].appendChild(div);
+            div.outerHTML = "<div id='botDiv' style='width: 400px; height: 0px; margin:10px; position: fixed; bottom: 0; right:0; z-index: 1000;><div  id='botTitleBar' style='height: 40px; width: 400px; position:fixed; cursor: pointer;'></div></div>";
+            BotChat.App({
+                directLine: { secret: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM' },
+                user: { id: 'You' },
+                bot: { id: 'MeBot1' }
+            }, document.getElementById("botDiv"));
+
+            document.getElementsByClassName("wc-header")[0].setAttribute("id", "chatbotheader");
+            document.querySelector('body').addEventListener('click', function (e) {
+                e.target.matches = e.target.matches || e.target.msMatchesSelector;
+                if (e.target.matches('#chatbotheader')) {
+                    var botDiv = document.querySelector('#botDiv');
+
+                    botDiv.style.height = "0px";
+
+                    document.getElementById("mychat").style.display = "block";
+                };
+            });
+
+            document.getElementById("mychat").addEventListener("click", function (e) {
+
+                document.getElementById("botDiv").style.height = '500px';
+
+                e.target.style.display = "none";
+            })
+        }());
+    </script>*@
+
+@*<body>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <h1>
+                    I am <strong>YaVA</strong>, the Yahoo Virtual Assistant to help you with all the FAQ.
+                </h1>
+            </header>
+
+            <!-- Main -->
+            <section id="main">
+
+                <!-- Thumbnails -->
+                <section class="thumbnails">
+                    <div id="bot" />
+                </section>
+
+            </section>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <p>&copy; 2018 - Yahoo Info Bot.
+            </footer>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="~/Content/assets/js/jquery.poptrox.min.js"></script>
+        <script src="~/Content/assets/js/jquery.min.js"></script>
+        <script src="~/Content/assets/js/skel.min.js"></script>
+        <script src="~/Content/assets/js/main.js"></script>
+        <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+        <script>
+                            BotChat.App({
+                                directLine: { secret: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM' },
+                                user: { id: 'You' },
+                                bot: { id: 'botid' },
+                                resize: 'detect'
+                            }, document.getElementById("bot"));
+        </script>
+
+    </body>*@
+
+</html>
+
+
+
+@*<html>
+    <body>
+        <div id="webchat"></div>
+        <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+        <script>
+          window.WebChat.renderWebChat({
+              directLine: window.WebChat.createDirectLine({ secret: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM' })
+          }, document.getElementById('webchat'));
+        </script>
+    </body>
+    </html>*@
+
+@*<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+    <script>
+
+        var user = {
+            id: 'user-id',
+            name: 'user name'
+        };
+
+        var botConnection = new BotChat.DirectLine({
+            token: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM',
+            user: user
+        });
+
+        BotChat.App({
+            user: user,
+            botConnection: botConnection,
+            bot: { id: 'bot-id', name: 'bot name' },
+            resize: 'detect'
+        }, document.getElementById("bot"));
+
+        botConnection
+            .postActivity({
+                from: user,
+                name: 'requestWelcomeDialog',
+                type: 'event',
+                value: ''
+            })
+            .subscribe(function (id) {
+                console.log('"trigger requestWelcomeDialog" sent');
+            });
+    </script>*@
+

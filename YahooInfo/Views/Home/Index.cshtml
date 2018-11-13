@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Yahoo Info Bot";
+}
+
+
+<link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+<style>
+    .wc-chatview-panel {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        border-radius: 10px;
+    }
+
+    .wc-message-groups {
+        background-color: whitesmoke;
+    }
+
+    .wc-header {
+        background-color: rgb(172, 125, 133);
+    }
+
+    .wc-message-from-bot .wc-message-content {
+        background-color: rgb(212, 190, 187);
+    }
+
+    .wc-message-from-me .wc-message-content {
+        background-color: rgb(109, 33, 190) !important;
+    }
+
+    .wc-message-from-me svg.wc-message-callout path {
+        fill: rgb(109, 33, 190) !important;
+    }
+    .wc-console{
+         background-color: #15375a;
+    }
+    .wc-console svg {
+         fill: white;
+    }
+    input[type="text"]
+    {
+        color:white!important;
+    }
+</style>
+<div>
+    <div id="bot">
+    </div>
+</div>
+
+<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+<script>
+    BotChat.App({
+        directLine: { secret: '-ks4WtO0-Ms.cwA.JOY.C3h9_MoFL5Y57xRy4VcpMcagCWrmfpmlnEwGeTtZaqM' },
+        user: { id: 'You' },
+        bot: { id: 'botid' },
+        resize: 'detect'
+    }, document.getElementById("bot"));
+
+    var hdr = document.getElementsByClassName("wc-header");
+    hdr[0].textContent = "Ask YaVA";
+</script>
